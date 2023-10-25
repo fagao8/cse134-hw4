@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanglei Gao's Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav {
+            position: fixed
+        }
+        main, footer{
+            padding-left: 125px
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Fanglei Gao</h1>
+            <p>Welcome to My Personal Website!</p>
+            <img src="https://cdn.rawgit.com/marionebl/svg-term-cli/1250f9c1/examples/parrot.svg" alt="dancing parrot">
+            <br>
+            <canvas id="myCanvas" width="400" height="30"></canvas>
+            <details>
+                <summary>Code snippet used to generate this:</summary>
+                <iframe width="450" height="400" src="https://jsfiddle.net/nzpstm4L/embedded/"></iframe>
+            </details>
+            <script>
+                var canvas = document.getElementById('myCanvas');
+                var ctx = canvas.getContext('2d');
+                var text = "Hello, World!";
+                ctx.font = "24px Courier New";
+                var index = 0;
+                function drawText() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillText(text.substring(0, index), 0, 20);
+                    index++;
+                    if (index > text.length) {
+                        index = 0;
+                    }
+                    setTimeout(drawText, 200);
+                }
+                drawText();
+            </script>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am a 4th year Math-Computer Science student at UC San Diego with a strong background in <b>front-end and back-end technologies.</b></p>
+            <p>I am also interested in how technologies interact with music. 
+                I came across <a href="https://codepen.io/teropa/full/gzjgEP/">this intriguing website</a> 
+                where audio is generated through random clicks on the screen. 
+                The following audio is what I generated:</p>
+            <audio src="src/studio_work.m4a" controls>
+                <strong>Your browser does not support the audio tag.</strong>
+            </audio>
+        </section>
+
+        <section id="project">
+            <h2>My Projects</h2>
+            <ol>
+                <li>
+                    <details>
+                        <summary>
+                            Sudoku app
+                        </summary>
+                        In this project I made a sudoku app supporting corner marks, center marks, and coloring.
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>
+                            CAPES data analysis
+                        </summary>
+                        <p>In this project I was responsible for finding the relationship between course GPA and the term it was offered.</p>
+                        <p>Check out this short video which goes through my findings for this project.</p>
+                        <video src="src/4.mp4" width="500" controls>
+                            <strong>Your browser does not support the video tag.</strong>
+                        </video>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>
+                            Data visualization on LPL
+                        </summary>
+                        In this project I analyzed and visualized match data from LPL (League of Legends Pro League).
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>
+                            Classification of user intent
+                        </summary>
+                        In this project I was responsible for using a pretrained BERT model with supervised contrastive learning to classify amazon user intent.
+                        <figure>
+                            <picture>
+                                <source type="image/webp" srcset="src/supcon.png.webp">
+                                <source type="image/jpeg" srcset="src/supcon.png.jpg">
+                                <source type="image/png" srcset="src/supcon.png">
+                                <img width="500" src="supcon.png" alt="empedding plot">
+                            </picture>
+                            <figcaption>Embedding plot of how user intents are classified</figcaption>
+                        </figure>
+                        <aside>
+                            <p><em>BERT model:</em> Bidirectional Encoder Representations from Transformers, a language 
+                                model that achieved state-of-the-art performance on natural language understaning tasks.</p>
+                            <p><em>Supervised contrastive learning:</em> I specifically used the loss function in <code>losses.py</code> in <a href="https://github.com/HobbitLong/SupContrast">this repository</a>.</p>
+                        </aside>
+                    </details>
+                </li>
+            </ol>
+            <table>
+                <caption>Language Used For Projects</caption>
+                <colgroup>
+                    <col span=2 style="background-color: #f2f2f2;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Language</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sudoku app</td>
+                        <td>Java</td>
+                    </tr>
+                    <tr>
+                        <td>CAPES data analysis</td>
+                        <td>Python</td>
+                    </tr>
+                    <tr>
+                        <td>Data visualization on LPL</td>
+                        <td>HTML, CSS, JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Classification of user intent</td>
+                        <td>Python</td>
+                    </tr>
+                </tbody>
+            </table>
+            <aside>
+                <h3>Other skills</h3>
+                <p>Git, Latex, R, MATLAB</p>
+            </aside>
+        </section>
+        <section id="contact">
+            <h2>
+                Contact Me
+                <svg width="40px" height="20px" viewBox="0 0 20 10">
+                    <rect x="1" y="1" width="14" height="8" stroke="#000000" fill="transparent" stroke-width="1"/>
+                    <line x1="1" y1="1" x2="8" y2="5" stroke="#000000" stroke-width="1" />
+                    <line x1="8" y1="5" x2="15" y2="1" stroke="#000000" stroke-width="1" />
+                </svg>
+            </h2>
+            <form action="https://httpbin.org/get" method="get">
+                <fieldset>
+                    <legend>Your Information</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+
+                    <label for="userType">I am a</label>
+                    <select id="userType" name="userType" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <optgroup label="School">
+                            <option value="student">Student</option>
+                            <option value="professor">Professor</option>
+                        </optgroup>
+                        <optgroup label="Industry">
+                            <option value="employer">Employer</option>
+                        </optgroup>
+                        <option value="other">Other</option>
+                    </select>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Message Subject</legend>
+                    <label for="reason">Reason for Contact:</label>
+                    <input list="contact-reasons" id="reason" name="reason">
+                    <datalist id="contact-reasons">
+                        <option value="Project Collaboration">
+                        <option value="Workshop or Training Inquiry">
+                        <option value="Interview Request">
+                        <option value="Networking Opportunity">
+                        <option value="Job Opportunity">
+                        <option value="Website Issue">
+                        <option value="General Inquiry">
+                    </datalist>
+                    <br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                </fieldset>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            <template id="myInfo">
+                <section>
+                    <h2>Contact Details</h2>
+                    <p><strong>Name:</strong> <span id="name">Fanglei Gao</span></p>
+                    <p><strong>Email:</strong> <span id="name">fagao@ucsd.edu</span></p>
+                </section>
+            </template>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <div>
+            <math>
+                <mrow>
+                    <mi>E</mi><mo>=</mo><mi>m</mi>
+                    <msup><mi>c</mi><mn>2</mn></msup>
+                </mrow>
+            </math>
+            <pre><i>Imagination is everything. 
+    It is the preview of life's coming attractions.</i>
+        -- Albert Einstein</pre>
+        </div>
+        <p>This page was made with &hearts; by Fanglei Gao.</p>
+    </footer>
+</body>
+</html>

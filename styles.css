@@ -102,9 +102,18 @@ nav a {
     font-size: 1rem
 }
 
-nav a:hover {
-    color: #B6B1A9;
-    transition: color 0.3s ease-out;
+@media screen and (min-width: 800px) {
+    nav a:hover {
+        color: #B6B1A9;
+        transition: color 0.3s ease-out;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    nav a:active {
+        color: #B6B1A9;
+        transition: color 0.3s ease-out;
+    }
 }
 
 #menu-icon, #menu-checkbox {
@@ -270,9 +279,18 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: var(--dark-primary-color, #182B49);;
-    transition: background-color 0.5s ease-out;
+@media screen and (min-width: 800px) {
+    button:hover {
+        background-color: var(--dark-primary-color, #182B49);;
+        transition: background-color 0.5s ease-out;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    button:active {
+        background-color: var(--dark-primary-color, #182B49);;
+        transition: background-color 0.5s ease-out;
+    }
 }
 
 img, picture, video, textarea {

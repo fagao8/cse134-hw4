@@ -7,17 +7,11 @@
     <meta property="og:title" content="Fanglei Gao's Personal Website">
     <title>Fanglei Gao's Homepage</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        nav {
-            position: fixed
-        }
-        main, footer{
-            padding-left: 125px
-        }
-    </style>
 </head>
 <body>
     <header>
+        <input type="checkbox" id="menu-checkbox">
+        <label for="menu-checkbox" id="menu-icon">&#9776;</label>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -32,12 +26,10 @@
         <section id="home">
             <h1>Fanglei Gao</h1>
             <p>Welcome to My Personal Website!</p>
-            <img src="https://cdn.rawgit.com/marionebl/svg-term-cli/1250f9c1/examples/parrot.svg" alt="dancing parrot">
-            <br>
-            <canvas id="myCanvas" width="400" height="30"></canvas>
+            <canvas id="myCanvas" width="300" height="30"></canvas>
             <details>
                 <summary>Code snippet used to generate this:</summary>
-                <iframe width="450" height="400" src="https://jsfiddle.net/nzpstm4L/embedded/"></iframe>
+                <iframe width="300" height="400" src="https://jsfiddle.net/nzpstm4L/embedded/"></iframe>
             </details>
             <script>
                 var canvas = document.getElementById('myCanvas');
@@ -106,13 +98,20 @@
                         <summary>
                             Classification of user intent
                         </summary>
-                        In this project I was responsible for using a pretrained BERT model with supervised contrastive learning to classify amazon user intent.
+                        <p>In this project I was responsible for using a pretrained BERT model with supervised contrastive learning to classify amazon user intent.</p>
                         <figure>
                             <picture>
-                                <source type="image/webp" srcset="src/supcon.png.webp">
-                                <source type="image/jpeg" srcset="src/supcon.png.jpg">
-                                <source type="image/png" srcset="src/supcon.png">
-                                <img width="500" src="supcon.png" alt="empedding plot">
+                                <source sizes="(max-width: 600px) 100vw, 600px, 
+                                               (max-width: 1800px) 100vw, 1800px"
+                                        srcset="src/supcon.png-small.webp 600w,
+                                                src/supcon.png.webp 1800w"
+                                        type="image/webp">
+                                        <source sizes="(max-width: 600px) 100vw, 600px, 
+                                        (max-width: 1800px) 100vw, 1800px"
+                                 srcset="src/supcon.png-small.jpg 600w,
+                                         src/supcon.png.jpg 1800w"
+                                 type="image/webp">
+                                <img width="600" height="600" src="src/supcon.png" alt="embedding plot">
                             </picture>
                             <figcaption>Embedding plot of how user intents are classified</figcaption>
                         </figure>
@@ -162,7 +161,7 @@
         <section id="contact">
             <h2>
                 Contact Me
-                <svg width="40px" height="20px" viewBox="0 0 20 10">
+                <svg width="40px" height="20px" viewBox="0 0 20 10" id="contact-icon">
                     <rect x="1" y="1" width="14" height="8" stroke="#000000" fill="transparent" stroke-width="1"/>
                     <line x1="1" y1="1" x2="8" y2="5" stroke="#000000" stroke-width="1" />
                     <line x1="8" y1="5" x2="15" y2="1" stroke="#000000" stroke-width="1" />

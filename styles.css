@@ -1,0 +1,297 @@
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 800;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+* {
+    font-family: "Open Sans", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 0;
+}
+
+:root {
+    --primary-color: #006A96;
+    --dark-primary-color: #182B49;
+    --secondary-color: #F5F0E6;
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+h1 {
+    font-weight: 800;
+    font-size: 4rem;
+    text-align: center;
+    background: linear-gradient(120deg, var(--primary-color, #006A96), var(--dark-primary-color, #182B49));
+    animation: gradient-flow 5s ease infinite;
+    padding: 3rem;
+    background-size: 200% 200%;
+    color: var(--secondary-color, #F5F0E6);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+nav {
+    position: fixed;
+    background-color: #EEEEEE;
+    height: 100dvh;
+    width: 112px;
+    box-sizing: border-box;
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1rem
+}
+
+nav a:hover {
+    color: #B6B1A9;
+    transition: color 0.3s ease-out;
+}
+
+#menu-icon, #menu-checkbox {
+    display: none;
+}
+
+main, footer{
+    padding-left: 112px;
+}
+
+footer > * {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+@media screen and (max-width: 800px) {
+    html {
+        font-size: 2dvw;
+    }
+
+    nav {
+        width: 14dvw;
+    }
+
+    main, footer{
+        padding-left: 14dvw
+    }
+
+    #contact-icon {
+        width: 3rem;
+        height: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #menu-icon {
+        font-size: 6dvw;
+        cursor: pointer;
+        display: inline;
+        position: fixed;
+        z-index: 2;
+        margin-left: 2dvw;
+    }
+
+    nav {
+        width: 10dvw;
+        & ul {
+            display: none;
+            transform: scaleX(0)
+        }
+    }
+
+    main, footer{
+        padding-left: 10dvw
+    }
+
+    #menu-checkbox {
+        display: none;
+    }
+
+    html {
+        font-size: 9px
+    }
+}
+
+#menu-checkbox:checked + label + nav {
+    width: 100px;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.5);
+    transition: width 0.5s ease, box-shadow 0.5s ease;
+}
+
+#menu-checkbox:checked + label + nav ul {
+    display: block;
+    transform: scaleX(1);
+    overflow: hidden;
+    transition: transform 0.5s ease;
+    text-align: right;
+}
+
+/* Will refactor toggle function with JavaScript in next assignment */
+#menu_icon:focus {
+    font-size: 6dvw;
+    cursor: pointer;
+    display: inline;
+    position: fixed;
+    z-index: 2;
+    margin-left: 2dvw;
+}
+
+#menu_icon:focus + nav {
+    width: 10dvw;
+    box-shadow: none;
+    & ul {
+        display: none;
+    }
+}
+
+section > * {
+    padding-left: 2vw;
+}
+
+section {
+    padding-bottom: 2rem;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--secondary-color, #F5F0E6);
+    & h2 {
+        color: var(--dark-primary-color, #182B49);
+    }
+}
+
+@media (color-gamut: srgb) {
+    section:nth-of-type(even) {
+        background-color: color-mix(in srgb, var(--secondary-color, #F5F0E6) 50%, white);
+        & h2 {
+            color: var(--dark-primary-color, #182B49);
+        }
+    }
+}
+
+aside {
+    padding-top: 1rem;
+}
+
+ol {
+    list-style: none;
+}
+
+details {
+    padding-bottom: 0.5rem;
+}
+
+p {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+input, select, textarea {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color, #F5F0E6);
+}
+
+@media (color-gamut: srgb) {
+    input, select, textarea {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        background-color: color(srgb 0.98, 0.97, 0.96);
+    }
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: white;
+    outline: none
+}
+
+button {
+    background-color: var(--primary-color, #006A96);
+    color: var(--secondary-color, #F5F0E6);
+    border: none;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--dark-primary-color, #182B49);;
+    transition: background-color 0.5s ease-out;
+}
+
+img, picture, video, textarea {
+    max-width: 60dvw;
+    height: auto;
+}
+
+audio {
+    max-width: 60dvw;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+figcaption {
+    text-align: center;
+}
+
+p:has(+ figure, + video, + audio) {
+    padding-bottom: 1rem;
+}

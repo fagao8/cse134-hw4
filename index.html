@@ -101,16 +101,10 @@
                         <p>In this project I was responsible for using a pretrained BERT model with supervised contrastive learning to classify amazon user intent.</p>
                         <figure>
                             <picture>
-                                <source sizes="(max-width: 600px) 100vw, 600px, 
-                                               (max-width: 1800px) 100vw, 1800px"
-                                        srcset="src/supcon.png-small.webp 600w,
-                                                src/supcon.png.webp 1800w"
-                                        type="image/webp">
-                                        <source sizes="(max-width: 600px) 100vw, 600px, 
-                                        (max-width: 1800px) 100vw, 1800px"
-                                        srcset="src/supcon.png-small.jpg 600w,
-                                                src/supcon.png.jpg 1800w"
-                                        type="image/webp">
+                                <source media="(max-width: 600px)" srcset="src/supcon.png-small.webp" type="image/webp">
+                                <source media="(max-width: 600px)" srcset="src/supcon.png-small.jpg" type="image/jpeg">
+                                <source media="(max-width: 1800px)" srcset="src/supcon.png.webp" type="image/webp">
+                                <source media="(max-width: 1800px)" srcset="src/supcon.png.jpg" type="image/jpeg">
                                 <img width="600" height="600" src="src/supcon.png" alt="embedding plot">
                             </picture>
                             <figcaption>Embedding plot of how user intents are classified</figcaption>

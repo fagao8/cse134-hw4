@@ -35,6 +35,17 @@ if (isDarkMode == null) {
     }
     else {
         lightMode();
+        if (themeColor) {
+            changeThemeColor(themeColor, false)
+        }
+        
+        if (bgColor) {
+            changeBgColor(bgColor)
+        }
+        
+        if (textColor) {
+            changeTextColor(textColor)
+        }
     }
 }
 else if (isDarkMode === "true") {
@@ -138,7 +149,9 @@ function lightMode() {
     if (submitButton) {
         submitButton.style.color = getComputedStyle(root).getPropertyValue("--secondary-color");
     }
-    sectionHeader.style.color = "#182B49"
+    if (sectionHeader) {
+        sectionHeader.style.color = "#182B49"
+    }
     colorPicker.forEach(picker => {
         picker.style.display = "flex";
     });
@@ -182,10 +195,14 @@ function changeThemeColor(color, storeBg) {
     root.style.setProperty("--nav-bar-color", "#EEEEEE");
     if (!localStorage.getItem("textColor") || localStorage.getItem("textColor") === "auto") {
         root.style.setProperty("--text-color", "black");
-        sectionHeader.style.color = minColor;
+        if (sectionHeader) {
+            sectionHeader.style.color = minColor;
+        }
     }
     else {
-        sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? minColor : maxColor
+        if (sectionHeader) {
+            sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? minColor : maxColor
+        }
     }
     bg.value = maxColor;
     theme.value = color;
@@ -208,14 +225,20 @@ function changeBgColor(color) {
     if (!localStorage.getItem("textColor") || localStorage.getItem("textColor") === "auto") {
         root.style.setProperty("--text-color", contrastColor)
         if (contrastColor != "black") {
-            sectionHeader.style.color = bgBackup
+            if (sectionHeader) {
+                sectionHeader.style.color = bgBackup
+            }
         }
         else {
-            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+            if (sectionHeader) {
+                sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+            }
         }
     }
     else {
-        sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? getComputedStyle(root).getPropertyValue("--dark-primary-color") : bgBackup
+        if (sectionHeader) {
+            sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? getComputedStyle(root).getPropertyValue("--dark-primary-color") : bgBackup
+        }
     }
     let similarColor = contrastColor == "black" ? "white" : "black"
     let grayColor = contrastColor == "black" ? "#EEEEEE" : "#3E3E3E"
@@ -244,11 +267,13 @@ function changeTextColor(option) {
         if (canvas) {
             ctx.fillStyle = contrastColor;
         }
-        if (contrastColor != "black") {
-            sectionHeader.style.color = bgBackup
-        }
-        else {
-            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+        if (sectionHeader) {
+            if (contrastColor != "black") {
+                sectionHeader.style.color = bgBackup
+            }
+            else {
+                sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+            }
         }
     }
     else {
@@ -256,11 +281,13 @@ function changeTextColor(option) {
         if (canvas) {
             ctx.fillStyle = option;
         }
-        if (option != "black") {
-            sectionHeader.style.color = bgBackup
-        }
-        else {
-            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+        if (sectionHeader) {
+            if (option != "black") {
+                sectionHeader.style.color = bgBackup
+            }
+            else {
+                sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+            }      
         }
     }
 }

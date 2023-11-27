@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/contact.css">
+    <title>Contact</title>
+</head>
+<body>
+    <h1>Contact Form</h1>
+    <form action="https://httpbin.org/post" method="post">
+        <form-field>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" minlength="5" required>
+            <output>Please enter valid name</output>
+        </form-field>
+
+        <form-field>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <output>Please enter valid email address</output>
+        </form-field>
+
+        <form-field>
+            <label for="comments">Comments:</label>
+            <textarea type="text" id="comments" name="comments" maxlength="300" minlength="10" rows="5", cols="50" required></textarea>
+            <div class="output">
+                <output id="comment-err">Do not use non-typical characters</output>
+                <output id="char-count">0/300</output>
+            </div>
+        </form-field>
+
+        <input type="hidden" id="possible_bot" name="possible_bot" value="true">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="index.html">Homepage &#8617;</a>
+    <script src="script/script.js"></script>
+</body>
+</html>

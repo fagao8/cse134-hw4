@@ -6,7 +6,7 @@
     <meta name="description" content="Fanglei Gao's personal website">
     <meta property="og:title" content="Fanglei Gao's Personal Website">
     <title>Fanglei Gao's Homepage</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
     <header>
@@ -17,8 +17,28 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#project">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="form-no-js.html">Contact (No JS)</a></li>
+                <li><a href="form.html">Contact</a></li>
             </ul>
+            <div id="theme-picker">
+                <hr>
+                <div>Customize Theme</div>
+                <input type="color" value="#006A96" class="theme">
+                <svg viewBox="0 0 48 48" class="theme" id="dark-mode" width="2.5rem" height="2.5rem">
+                    <path d="M24.48,42.18A18.66,18.66,0,0,1,22.11,5,2,2,0,0,1,23.56,8.6,11.32,11.32,0,1,0,39.4,24.44,2,2,0,0,1,43,25.89,18.68,18.68,0,0,1,24.48,42.18ZM16.36,11.32A14.66,14.66,0,1,0,36.68,31.64,15.35,15.35,0,0,1,15,17.68,15.2,15.2,0,0,1,16.36,11.32Z"></path>
+                </svg>
+                <svg viewBox="0 0 48 48" class="theme" id="light-mode" width="2.5rem" height="2.5rem">
+                    <path d="M24,12A12,12,0,1,0,36,24,12,12,0,0,0,24,12Zm0,20a8,8,0,1,1,8-8A8,8,0,0,1,24,32Z"></path>
+                    <path d="M24,9a2,2,0,0,0,2-2V4a2,2,0,0,0-4,0V7A2,2,0,0,0,24,9Z"></path>
+                    <path d="M36,14a2,2,0,0,0,1.42-.59l2.12-2.12a2,2,0,1,0-2.83-2.83l-2.12,2.12A2,2,0,0,0,36,14Z"></path>
+                    <path d="M44,22H41a2,2,0,0,0,0,4h3a2,2,0,1,0,0-4Z"></path>
+                    <path d="M37.4,34.61a2,2,0,1,0-2.83,2.82l2.12,2.13a2,2,0,0,0,2.83-2.83Z"></path>
+                    <path d="M24,39a2,2,0,0,0-2,2v3a2,2,0,0,0,4,0V41A2,2,0,0,0,24,39Z"></path>
+                    <path d="M10.53,34.61,8.41,36.73a2,2,0,0,0,0,2.83,2,2,0,0,0,2.82,0l2.13-2.13a2,2,0,1,0-2.83-2.82Z"></path>
+                    <path d="M9,24a2,2,0,0,0-2-2H4a2,2,0,0,0,0,4H7A2,2,0,0,0,9,24Z"></path>
+                    <path d="M10.53,13.39a2,2,0,0,0,1.41.59,2,2,0,0,0,1.42-3.42L11.23,8.44a2,2,0,0,0-2.82,2.83Z"></path>
+                </svg>
+            </div>
         </nav>
     </header>
 
@@ -120,7 +140,7 @@
             <table>
                 <caption>Language Used For Projects</caption>
                 <colgroup>
-                    <col span=2 style="background-color: #f2f2f2;">
+                    <col span=2>
                 </colgroup>
                 <thead>
                     <tr>
@@ -152,7 +172,7 @@
                 <p>Git, Latex, R, MATLAB</p>
             </aside>
         </section>
-        <section id="contact">
+        <!-- <section id="contact">
             <h2>
                 Contact Me
                 <svg width="40px" height="20px" viewBox="0 0 20 10" id="contact-icon">
@@ -213,7 +233,7 @@
                     <p><strong>Email:</strong> <span id="name">fagao@ucsd.edu</span></p>
                 </section>
             </template>
-        </section>
+        </section> -->
     </main>
     <hr>
     <footer>
@@ -230,5 +250,6 @@
         </div>
         <p>This page was made with &hearts; by Fanglei Gao.</p>
     </footer>
+    <script src="script/theme.js"></script>
 </body>
 </html>

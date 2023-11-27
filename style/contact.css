@@ -1,0 +1,199 @@
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 800;
+    src: url(https://fonts.gstatic.com/s/opensans/v36/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format("woff2");
+    font-display: swap;
+}
+
+* {
+    font-family: "Open Sans", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+    text-align: center;
+    background: linear-gradient(120deg, var(--primary-color, #006A96), var(--dark-primary-color, #182B49));
+    animation: gradient-flow 5s ease infinite;
+    padding: 3rem;
+    background-size: 200% 200%;
+    color: var(--secondary-color, #F5F0E6);
+}
+
+@media screen and (max-width: 800px) {
+    html {
+        font-size: 2dvw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    html {
+        font-size: 10px
+    }
+}
+
+input, select, textarea {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    background-color: var(--secondary-color, #F5F0E6);
+}
+
+@media (color-gamut: srgb) {
+    input, select, textarea {
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        background-color: color(srgb 0.98, 0.97, 0.96);
+    }
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: white;
+    outline: none
+}
+
+button {
+    background-color: var(--primary-color, #006A96);
+    color: var(--secondary-color, #F5F0E6);
+    border: none;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
+    button:hover {
+        background-color: var(--dark-primary-color, #182B49);;
+        transition: background-color 0.5s ease-out;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    button:active {
+        background-color: var(--dark-primary-color, #182B49);;
+        transition: background-color 0.5s ease-out;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    flex: 1;
+}
+
+form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem
+}
+
+input {
+    width: 20rem;
+    max-width: 80dvw;
+    border: none;
+    border-bottom: 1.5px solid black;
+    padding: 0.4rem 0.5rem;
+    box-sizing: border-box
+}
+
+button {
+    width: 6em
+}
+
+output {
+    color: #6E6E6E;
+}
+
+form-field:has(:required) label::after {
+    content: "*";
+    margin-left: 0.2rem;
+    color: red;
+}
+
+#name:valid + output {
+    display: none;
+}
+
+#email:valid + output {
+    display: none;
+}
+
+#comments {
+    width: 40rem;
+    max-width: 80dvw;
+    box-sizing: border-box
+}
+
+.output {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#comments + .output {
+    width: 40rem;
+    max-width: 80dvw;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    margin: 2rem;
+}
+
+.flash {
+    animation: flash 1.5s ease infinite;
+}
+
+@keyframes flash {
+    0%, 100% {
+        background-color: inherit;
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.2)
+    }
+}
+
+.warn {
+    color: red;
+}
+
+textarea {
+    resize: none;
+    border-radius: 4px;
+}
+
+.bold {
+    font-weight: bold;
+}

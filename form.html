@@ -35,7 +35,58 @@
         <button type="submit">Submit</button>
     </form>
 
-    <a href="index.html">Homepage &#8617;</a>
+    <footer>
+        <div id="theme-picker" class="no_js">
+            <div>Customize Theme</div>
+            <span id="popup" class="theme"></span>
+            <svg viewBox="0 0 48 48" class="theme" id="dark-mode" width="2.5rem" height="2.5rem">
+                <path d="M24.48,42.18A18.66,18.66,0,0,1,22.11,5,2,2,0,0,1,23.56,8.6,11.32,11.32,0,1,0,39.4,24.44,2,2,0,0,1,43,25.89,18.68,18.68,0,0,1,24.48,42.18ZM16.36,11.32A14.66,14.66,0,1,0,36.68,31.64,15.35,15.35,0,0,1,15,17.68,15.2,15.2,0,0,1,16.36,11.32Z"></path>
+            </svg>
+            <svg viewBox="0 0 48 48" class="theme" id="light-mode" width="2.5rem" height="2.5rem">
+                <path d="M24,12A12,12,0,1,0,36,24,12,12,0,0,0,24,12Zm0,20a8,8,0,1,1,8-8A8,8,0,0,1,24,32Z"></path>
+                <path d="M24,9a2,2,0,0,0,2-2V4a2,2,0,0,0-4,0V7A2,2,0,0,0,24,9Z"></path>
+                <path d="M36,14a2,2,0,0,0,1.42-.59l2.12-2.12a2,2,0,1,0-2.83-2.83l-2.12,2.12A2,2,0,0,0,36,14Z"></path>
+                <path d="M44,22H41a2,2,0,0,0,0,4h3a2,2,0,1,0,0-4Z"></path>
+                <path d="M37.4,34.61a2,2,0,1,0-2.83,2.82l2.12,2.13a2,2,0,0,0,2.83-2.83Z"></path>
+                <path d="M24,39a2,2,0,0,0-2,2v3a2,2,0,0,0,4,0V41A2,2,0,0,0,24,39Z"></path>
+                <path d="M10.53,34.61,8.41,36.73a2,2,0,0,0,0,2.83,2,2,0,0,0,2.82,0l2.13-2.13a2,2,0,1,0-2.83-2.82Z"></path>
+                <path d="M9,24a2,2,0,0,0-2-2H4a2,2,0,0,0,0,4H7A2,2,0,0,0,9,24Z"></path>
+                <path d="M10.53,13.39a2,2,0,0,0,1.41.59,2,2,0,0,0,1.42-3.42L11.23,8.44a2,2,0,0,0-2.82,2.83Z"></path>
+            </svg>
+        </div>
+        <a href="index.html">Homepage &#8617;</a>
+    </footer>
+    <div id="custom-theme">
+        <div class="custom">
+            <label for="themeColor">Theme Color:</label>
+            <input type="color" class="theme" id="themeColor" value="#006A96">
+        </div>
+        <div class="custom">
+            <label for="bgColor">Background Color:</label>
+            <input type="color" class="theme" id="bgColor" value="#F5F0E6">
+        </div>
+        <div class="custom">
+            <label for="textColor">Text Color:</label>
+            <select id="textColor">
+                <option value="auto">Auto</option>
+                <option value="black">Black</option>
+                <option value="white">White</option>
+            </select>
+        </div>
+        <div class="custom">
+            <label for="fontSet">Font:</label>
+            <select id="fontSet">
+                <option value="Open Sans">Default (Open Sans)</option>
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+        </div>
+        <hr>
+        <div class="custom" id="reset">
+            <span>&#8635; Reset to default</span>
+        </div>
+    </div>
     <script src="script/script.js"></script>
+    <script src="script/theme.js"></script>
 </body>
 </html>

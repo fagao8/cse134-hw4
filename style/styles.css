@@ -30,12 +30,6 @@
     font-display: swap;
 }
 
-* {
-    font-family: "Open Sans", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    margin: 0;
-    color: var(--text-color, black)
-}
-
 :root {
     --primary-color: #006A96;
     --dark-primary-color: #182B49;
@@ -43,6 +37,13 @@
     --background-color: white;
     --nav-bar-color: #EEEEEE;
     --text-color: black;
+    --font: "Open Sans", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+* {
+    font-family: var(--font, "Open Sans", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif);
+    margin: 0;
+    color: var(--text-color, black)
 }
 
 @keyframes gradient-flow {
@@ -66,15 +67,16 @@ input[type="color"] {
     height: 2.5rem;
     border: none;
     padding: 0;
+    margin: 0;
 }
 
 input[type="color"]::-webkit-color-swatch {
     border-radius: 50%;
-    border: 7px solid var(--primary-color, #006A96)
+    border: 1px solid var(--text-color, black)
 }
 input[type="color"]::-moz-color-swatch {
     border-radius: 50%;
-    border: 7px solid var(--primary-color, #006A96)
+    border: 1px solid var(--text-color, black)
 }
 
 
@@ -142,20 +144,73 @@ nav a {
     padding-left: 15%;
 }
 
+#theme-picker {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
 #theme-picker div {
     padding: 1rem;
     font-size: 1rem;
 }
 
+#custom-theme {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    background-color: var(--background-color, white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    width: 30dvw;
+    min-width: 15rem;
+    border-radius: 8px;
+    z-index: 3;
+    bottom: 2rem;
+    left: 8rem;
+}
+
+.custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom:has( + hr) {
+    padding-bottom: 1rem;
+}
+
+.custom select {
+    background-color: var(--secondary-color, #F5F0E6);
+    color: var(--text-color, black);
+}
+
+#popup {
+    border-radius: 50%;
+    background-color: var(--primary-color, #006894);
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+    border: 1px solid var(--text-color, black);
+}
+
+.custom span {
+    margin: auto;
+    padding-top: 1rem;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 800px) {
-    nav a:hover {
+    nav a:hover, input[type="reset"]:hover {
         color: #B6B1A9;
         transition: color 0.3s ease-out;
     }
 }
 
 @media screen and (max-width: 800px) {
-    nav a:active {
+    nav a:active, input[type="reset"]:active {
         color: #B6B1A9;
         transition: color 0.3s ease-out;
     }
@@ -228,6 +283,10 @@ footer > * {
     #theme-picker div {
         display: none
     }
+
+    #custom-theme {
+        left: 12dvw;
+    }
 }
 
 #menu-checkbox:checked + label + nav {
@@ -271,11 +330,11 @@ section {
     padding-bottom: 2rem;
 }
 
-section:nth-of-type(odd) {
+section:nth-of-type(even) {
     background-color: var(--background-color, white);
 }
 
-section:nth-of-type(even) {
+section:nth-of-type(odd) {
     background-color: var(--secondary-color, #F5F0E6);
     & h2 {
         color: var(--dark-primary-color, #182B49);
@@ -287,7 +346,7 @@ footer {
 }
 
 @media (color-gamut: srgb) {
-    section:nth-of-type(even) {
+    section:nth-of-type(odd) {
         background-color: color-mix(in srgb, var(--secondary-color, #F5F0E6) 50%, var(--background-color, white));
         & h2 {
             color: var(--dark-primary-color, #182B49);
@@ -312,22 +371,22 @@ p {
     padding-bottom: 0.5rem;
 }
 
-input, select, textarea {
+input[type="text"], select, textarea {
     margin-top: 0.5rem;
     font-size: 1rem;
     background-color: var(--secondary-color, #F5F0E6);
 }
 
-@media (color-gamut: srgb) {
-    input, select, textarea {
+/* @media (color-gamut: srgb) {
+    input[type="text"], select, textarea {
         margin-top: 0.5rem;
         font-size: 1rem;
         background-color: color(srgb 0.98, 0.97, 0.96);
     }
-}
+} */
 
-input:focus, select:focus, textarea:focus {
-    background-color: white;
+input[type="text"]:focus, select:focus, textarea:focus {
+    background-color:  var(--background-color, white);
     outline: none
 }
 
@@ -381,14 +440,14 @@ form {
     justify-content: space-between;
 }
 
-input {
+input[type="text"] {
     width: 20rem;
     border: none;
     border-bottom: 1.5px solid black;
     margin-bottom: 1.5rem;
 }
 
-input, textarea {
+input[type="text"], textarea {
     padding: 0.4rem 0.5rem
 }
 
@@ -414,4 +473,8 @@ form label::after {
 
 col {
      background-color: var(--nav-bar-color, #EEEEEE);
+}
+
+.no_js {
+    display: none;
 }

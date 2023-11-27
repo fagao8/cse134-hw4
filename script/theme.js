@@ -14,7 +14,7 @@ if (isDarkMode == null) {
         lightMode();
     }
 }
-else if (isDarkMode == true) {
+else if (isDarkMode == "true") {
     darkMode();
 }
 else {

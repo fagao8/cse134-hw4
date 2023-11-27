@@ -85,6 +85,10 @@ input[type="color"]::-moz-color-swatch {
     fill: var(--text-color, #EEEEEE)
 }
 
+#dark-mode path {
+    fill: var(--text-color, black)
+}
+
 .theme {
     align-self: flex-start;
     margin: 1rem;

@@ -20,6 +20,11 @@ const bg = document.getElementById("bgColor");
 const textElem = document.getElementById("textColor");
 const font = document.getElementById("fontSet");
 const reset = document.getElementById("reset");
+const sectionHeader = document.querySelector("section:nth-of-type(odd) h2")
+
+const colorPicker = document.querySelectorAll(".color")
+
+var bgBackup = "";
 
 themePicker.style.display = "flex";
 
@@ -37,20 +42,16 @@ else if (isDarkMode === "true") {
 }
 else {
     lightMode();
-}
-
-if (themeColor) {
-    changeThemeColor(themeColor, false)
-}
-
-if (bgColor) {
-    changeBgColor(bgColor)
-}
-
-if (textColor) {
-    textElem.value = textColor
-    if (textColor != "auto") {
-        root.style.setProperty("--text-color", textColor)
+    if (themeColor) {
+        changeThemeColor(themeColor, false)
+    }
+    
+    if (bgColor) {
+        changeBgColor(bgColor)
+    }
+    
+    if (textColor) {
+        changeTextColor(textColor)
     }
 }
 
@@ -107,6 +108,14 @@ function darkMode() {
     if (submitButton) {
         submitButton.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
     }
+    sectionHeader.style.color = "#CECECE"
+    colorPicker.forEach(picker => {
+        picker.style.display = "none";
+    });
+}
+
+function darkSuppress() {
+    alert("Please customize theme in light mode!")
 }
 
 function lightMode() {
@@ -129,9 +138,15 @@ function lightMode() {
     if (submitButton) {
         submitButton.style.color = getComputedStyle(root).getPropertyValue("--secondary-color");
     }
+    sectionHeader.style.color = "#182B49"
+    colorPicker.forEach(picker => {
+        picker.style.display = "flex";
+    });
 }
 
-document.addEventListener("click", function(e) {
+document.addEventListener("click", popupAction);
+
+function popupAction(e) {
     if (!popupWindow.contains(e.target) && popupWindow.style.display === "flex") {
         popupWindow.style.display = "none";
         e.preventDefault();
@@ -139,7 +154,7 @@ document.addEventListener("click", function(e) {
     else if (e.target === popup) {
         popupWindow.style.display = "flex";
     }
-});
+}
 
 theme.addEventListener("change", e => {changeThemeColor(e.target.value, true)})
 
@@ -149,7 +164,7 @@ function changeThemeColor(color, storeBg) {
     var r = parseInt(color.substring(1, 3), 16);
     var g = parseInt(color.substring(3, 5), 16);
     var b = parseInt(color.substring(5, 7), 16);
-    let ratio = 0.3
+    let ratio = 0.2
     const whiteR = Math.round((1 - ratio) * 255 + ratio * r);
     const whiteG = Math.round((1 - ratio) * 255 + ratio * g);
     const whiteB = Math.round((1 - ratio) * 255 + ratio * b);
@@ -167,10 +182,17 @@ function changeThemeColor(color, storeBg) {
     root.style.setProperty("--nav-bar-color", "#EEEEEE");
     if (!localStorage.getItem("textColor") || localStorage.getItem("textColor") === "auto") {
         root.style.setProperty("--text-color", "black");
+        sectionHeader.style.color = minColor;
+    }
+    else {
+        sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? minColor : maxColor
     }
     bg.value = maxColor;
     theme.value = color;
-
+    if (canvas) {
+        ctx.fillStyle = "black";
+    }
+    bgBackup = maxColor
 }
 
 bg.addEventListener("change", e => {changeBgColor(e.target.value)})
@@ -185,12 +207,24 @@ function changeBgColor(color) {
     let contrastColor = getContrastColor(color)
     if (!localStorage.getItem("textColor") || localStorage.getItem("textColor") === "auto") {
         root.style.setProperty("--text-color", contrastColor)
+        if (contrastColor != "black") {
+            sectionHeader.style.color = bgBackup
+        }
+        else {
+            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+        }
     }
-    let similarColor = contrastColor == "white" ? "black" : "white"
-    let grayColor = contrastColor == "white" ? "#3E3E3E" : "#EEEEEE"
+    else {
+        sectionHeader.style.color = localStorage.getItem("textColor") == "black" ? getComputedStyle(root).getPropertyValue("--dark-primary-color") : bgBackup
+    }
+    let similarColor = contrastColor == "black" ? "white" : "black"
+    let grayColor = contrastColor == "black" ? "#EEEEEE" : "#3E3E3E"
     root.style.setProperty("--background-color", similarColor);
     root.style.setProperty("--nav-bar-color", grayColor);
     bg.value = color
+    if (canvas) {
+        ctx.fillStyle = contrastColor;
+    }
 }
 
 font.addEventListener("change", e => {
@@ -198,24 +232,45 @@ font.addEventListener("change", e => {
     root.style.setProperty("--font", e.target.value)
 })
 
-textElem.addEventListener("change", e => {
-    localStorage.setItem("textColor", e.target.value)
-    if (e.target.value == "auto") {
+textElem.addEventListener("change", (e) => {changeTextColor(e.target.value)})
+
+function changeTextColor(option) {
+    localStorage.setItem("textColor", option)
+    textElem.value = option
+    if (option == "auto") {
         let color = getComputedStyle(root).getPropertyValue("--secondary-color");
         let contrastColor = getContrastColor(color)
         root.style.setProperty("--text-color", contrastColor)
+        if (canvas) {
+            ctx.fillStyle = contrastColor;
+        }
+        if (contrastColor != "black") {
+            sectionHeader.style.color = bgBackup
+        }
+        else {
+            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+        }
     }
     else {
-        root.style.setProperty("--text-color", e.target.value)
+        root.style.setProperty("--text-color", option)
+        if (canvas) {
+            ctx.fillStyle = option;
+        }
+        if (option != "black") {
+            sectionHeader.style.color = bgBackup
+        }
+        else {
+            sectionHeader.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
+        }
     }
-})
+}
 
 function getContrastColor(hexColor) {
     const r = parseInt(hexColor.slice(1, 3), 16);
     const g = parseInt(hexColor.slice(3, 5), 16);
     const b = parseInt(hexColor.slice(5, 7), 16);
     const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-    return luminance > 0.5 ? "black" : "white";
+    return luminance > 0.5 ? "black" : "#EEEEEE";
 }
 
 function rgbToHex(r, g, b) {

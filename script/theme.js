@@ -124,7 +124,9 @@ function darkMode() {
     if (submitButton) {
         submitButton.style.color = getComputedStyle(root).getPropertyValue("--dark-primary-color");
     }
-    sectionHeader.style.color = "#CECECE"
+    if (sectionHeader) {
+        sectionHeader.style.color = "#CECECE"
+    }
     colorPicker.forEach(picker => {
         picker.style.display = "none";
     });

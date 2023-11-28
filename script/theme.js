@@ -9,6 +9,7 @@ if (canvas) {
     var ctx = canvas.getContext("2d");
 }
 const noJS = document.querySelectorAll(".no_js");
+const themePicker = document.getElementById("theme-picker");
 const popupButton = document.getElementById("popup");
 const popupWindow = document.getElementById("custom-theme");
 const submitButton = document.querySelector("button");
@@ -29,6 +30,8 @@ var bgBackup = "";
 noJS.forEach(elem => {
     elem.classList.remove("no_js")
 });
+
+themePicker.style.display = "flex"
 
 if (isDarkMode == null) {
     // follow system if first use

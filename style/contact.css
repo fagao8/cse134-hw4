@@ -124,6 +124,15 @@ input {
     box-sizing: border-box
 }
 
+input:has(+ .output > .info) {
+    width: 40rem;
+    max-width: 80dvw;
+    border: none;
+    border-bottom: 1.5px solid var(--text-color, black);
+    padding: 0.4rem 0.5rem;
+    box-sizing: border-box
+}
+
 button {
     width: 6em
 }
@@ -138,29 +147,36 @@ form-field:has(:required) label::after {
     color: red;
 }
 
-#name:valid + output {
-    display: none;
+#name:valid + .output .error {
+    visibility: hidden;
 }
 
-#email:valid + output {
-    display: none;
-}
-
-#comments {
-    width: 40rem;
-    max-width: 80dvw;
-    box-sizing: border-box
+#email:valid + .output .error {
+    visibility: hidden;
 }
 
 .output {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-}
-
-#comments + .output {
     width: 40rem;
     max-width: 80dvw;
+}
+
+#comments {
+    width: 40rem;
+    max-width: 80dvw;
+    padding: 0.4rem 0.5rem;
+    box-sizing: border-box
+}
+
+.error {
+    margin-right: 1rem;
+}
+
+.info {
+    margin-left: 1rem;
+    text-align: end;
 }
 
 body {

@@ -12,21 +12,27 @@
         <form-field>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" minlength="5" required>
-            <output>Please enter valid name</output>
+            <div class="output">
+                <output class="error">Please enter valid name</output>
+                <output class="info">I would love to address you by your full name</output>
+            </div>
         </form-field>
 
         <form-field>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            <output>Please enter valid email address</output>
+            <div class="output">
+                <output class="error">Please enter valid email address</output>
+                <output class="info">Make sure it's your email so I can get back to you</output>
+            </div>
         </form-field>
 
         <form-field>
             <label for="comments">Comments:</label>
             <input type="text" id="comments" name="comments" maxlength="500" minlength="10" pattern="[a-zA-Z0-9.,!?'&quot;:;\(\)\-_ ]+" required>
             <div class="output">
-                <output>Do not use non-typical characters</output>
-                <output>Maximum 500 characters</output>
+                <output class="error">Do not use non-typical characters</output>
+                <output class="info">Maximum 500 characters</output>
             </div>
         </form-field>
 

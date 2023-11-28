@@ -324,6 +324,7 @@ reset.addEventListener("click", (e) => {
     else {
         lightMode();
     }
+    root.style.setProperty("--font", "Open Sans")
     textElem.value = "auto";
     font.value = "Open Sans";
     theme.value = getComputedStyle(root).getPropertyValue("--primary-color");

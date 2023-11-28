@@ -96,6 +96,11 @@ input[type="color"]::-moz-color-swatch {
     cursor: pointer;
 }
 
+svg.theme {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
 h1 {
     font-weight: 800;
     font-size: 4rem;
@@ -120,7 +125,7 @@ h3 {
 nav {
     position: fixed;
     background-color: var(--nav-bar-color, #EEEEEE);
-    height: 100dvh;
+    height: 100%;
     width: 112px;
     box-sizing: border-box;
     padding-top: 1em;
